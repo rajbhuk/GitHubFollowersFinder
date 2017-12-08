@@ -1,0 +1,26 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div style="text-align:center" ng-controller="app-root" class="form-group">
+ <h1>Welcome to Github Followers Search</h1>
+ <input type="text" ngControl="username" #username="ngForm" [(ngModel)] = "inputusr" class="form-control" placeholder="UserName">
+ <button type="submit" class="btn btn-success">Search</button>
+ <br/>
+ <h3>List of followers</h3>
+</div>
+<h3 *ngIf="isVisible">@{{user.login}} aka {{user.name}}</h3>
+<img *ngIf="isVisible" class="avatar" src="{{ user.avatar_url }}">
+<h3 *ngIf="isVisible">Followers</h3>
+<div *ngIf="isVisible" class="row">
+  <div *ngFor="#follower of followers" class="col-sm-3 animated fadeInRight">
+    <div class="thumbnail">
+      <img *ngIf="isVisible" src="{{ follower.avatar_url }}" alt="...">
+      <div class="caption">
+        <a href="{{ follower.html_url }}" target="_blank">
+          <h4 class="text-center">{{ follower.login }}</h4>
+        </a>
+        <p class="text-center">User ID: {{ follower.id }}</p>
+        <p class="text-center">Followers: Show followers of a follower here.</p>
+      </div>
+    </div>
+  </div>
+</div>
